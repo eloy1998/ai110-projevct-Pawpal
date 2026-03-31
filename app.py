@@ -38,7 +38,7 @@ At minimum, your system should:
     )
 
 if 'owner' not in st.session_state:
-    st.session_state.owner = Owner("Jordan")
+    st.session_state.owner = Owner.load_from_json()
 
 owner = st.session_state.owner
 scheduler = Scheduler(owner)
@@ -91,3 +91,7 @@ if st.button("Generate Schedule"):
         st.table([{"Time": t.time, "Description": t.description, "Status": "Completed" if t.completed else "Pending"} for t in sorted_schedule])
     else:
         st.info("No tasks scheduled for today.")
+
+if st.button("Save Data"):
+    owner.save_to_json()
+    st.success("Data saved to data.json!")

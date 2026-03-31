@@ -41,6 +41,54 @@ class Owner:
     def get_all_tasks(self) -> List[Task]:
         return [task for pet in self.pets for task in pet.tasks]
 
+    def save_to_json(self, filename: str = "data.json"):
+        """Save the owner's data to a JSON file."""
+        import json
+        data = {
+            "name": self.name,
+            "pets": [
+                {
+                    "name": pet.name,
+                    "species": pet.species,
+                    "tasks": [
+                        {
+                            "description": task.description,
+                            "time": task.time,
+                            "frequency": task.frequency,
+                            "completed": task.completed,
+                            "date": task.date
+                        } for task in pet.tasks
+                    ]
+                } for pet in self.pets
+            ]
+        }
+        with open(filename, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=4)
+
+    @classmethod
+    def load_from_json(cls, filename: str = "data.json") -> "Owner":
+        """Load owner data from a JSON file."""
+        import json
+        try:
+            with open(filename, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            owner = cls(data["name"])
+            for pet_data in data["pets"]:
+                pet = Pet(pet_data["name"], pet_data["species"])
+                for task_data in pet_data["tasks"]:
+                    task = Task(
+                        task_data["description"],
+                        task_data["time"],
+                        task_data["frequency"],
+                        task_data["completed"],
+                        task_data["date"]
+                    )
+                    pet.add_task(task)
+                owner.add_pet(pet)
+            return owner
+        except FileNotFoundError:
+            return cls("Default Owner")
+
 class Scheduler:
     def __init__(self, owner: Owner):
         self.owner = owner

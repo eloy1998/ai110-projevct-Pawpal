@@ -31,6 +31,7 @@ PawPal+ includes the following key features:
 - **Conflict Detection**: Warns about tasks scheduled at the same time to prevent overlaps.
 - **Recurring Tasks**: Daily tasks automatically generate the next occurrence when marked complete.
 - **Filtering**: Filter tasks by completion status to focus on pending items.
+- **Data Persistence**: Save and load pet and task data to/from a JSON file for persistence between sessions.
 
 ## 📸 Demo
 
@@ -43,7 +44,10 @@ Run the automated test suite with: `python -m pytest`
 The tests cover core behaviors including task completion, addition, sorting by time, recurrence logic for daily tasks, and conflict detection for overlapping schedules.
 
 **Confidence Level**: ⭐⭐⭐⭐⭐ (5 stars) - All tests pass, verifying the system's reliability for pet scheduling. 
+## Extensions
 
+### Data Persistence
+Implemented data persistence using JSON serialization. The Owner class now includes `save_to_json()` and `load_from_json()` methods to store and retrieve pet and task data. The Streamlit app loads data on startup and provides a save button. This was implemented using Agent Mode to plan the serialization logic and handle complex object conversion to dictionaries for JSON compatibility.
 ## Getting started
 
 ### Setup
