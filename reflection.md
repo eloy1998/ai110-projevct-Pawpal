@@ -27,8 +27,7 @@ The initial UML design includes four main classes: Owner, Pet, Task, and Schedul
 
 **b. Tradeoffs**
 
-- Describe one tradeoff your scheduler makes.
-- Why is that tradeoff reasonable for this scenario?
+The scheduler only checks for exact time matches instead of overlapping durations, which simplifies the logic and improves performance but may miss conflicts where tasks have different start times but overlap in duration.
 
 ---
 
