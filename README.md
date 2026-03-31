@@ -30,6 +30,14 @@ PawPal+ now includes advanced features for efficient pet care management:
 - **Recurring Tasks**: Daily tasks automatically generate the next occurrence when marked complete.
 - **Conflict Detection**: Identifies and warns about tasks scheduled at the same time to prevent overlaps.
 
+## Testing PawPal+
+
+Run the automated test suite with: `python -m pytest`
+
+The tests cover core behaviors including task completion, addition, sorting by time, recurrence logic for daily tasks, and conflict detection for overlapping schedules.
+
+**Confidence Level**: ⭐⭐⭐⭐⭐ (5 stars) - All tests pass, verifying the system's reliability for pet scheduling. 
+
 ## Getting started
 
 ### Setup
