@@ -13,8 +13,7 @@ The initial UML design includes four main classes: Owner, Pet, Task, and Schedul
 
 **b. Design changes**
 
-- Did your design change during implementation?
-- If yes, describe at least one change and why you made it.
+The design changed during implementation to support recurring tasks. Added a 'date' attribute to the Task class and a 'mark_task_complete' method to the Scheduler class to automatically create next-day tasks for daily frequencies.
 
 ---
 
@@ -22,8 +21,7 @@ The initial UML design includes four main classes: Owner, Pet, Task, and Schedul
 
 **a. Constraints and priorities**
 
-- What constraints does your scheduler consider (for example: time, priority, preferences)?
-- How did you decide which constraints mattered most?
+The scheduler considers time (for sorting), frequency (for recurring tasks), and conflicts (exact time matches). Priorities are handled through time-based ordering, where earlier tasks are prioritized. I decided on these constraints as they cover the core pet care needs: daily routines, recurring schedules, and avoiding overlaps.
 
 **b. Tradeoffs**
 
@@ -35,19 +33,19 @@ The scheduler only checks for exact time matches instead of overlapping duration
 
 **a. How you used AI**
 
-- How did you use AI tools during this project (for example: design brainstorming, debugging, refactoring)?
-- What kinds of prompts or questions were most helpful?
+I used AI tools throughout the project for design brainstorming (generating UML diagrams), code implementation (fleshing out class methods), debugging (identifying test failures), and documentation (generating docstrings). The most helpful prompts were specific requests like "Create a Mermaid.js class diagram for these classes" and "Implement sorting logic using sorted() with lambda".
 
 **b. Judgment and verification**
 
-- Describe one moment where you did not accept an AI suggestion as-is.
-- How did you evaluate or verify what the AI suggested?
+I rejected an AI suggestion for a more complex conflict detection algorithm that checked for overlapping durations, as it would complicate the code unnecessarily for this simple app. Instead, I kept the exact time match detection for clarity and simplicity. I evaluated by considering the app's scope and user needs, verifying through testing that the simple version met requirements.
 
 ---
 
 ## 4. Testing and Verification
 
 **a. What you tested**
+
+I tested core behaviors including task completion and addition, sorting tasks by time, recurrence logic for daily tasks, and conflict detection for duplicate times. These tests ensure the system's reliability for pet scheduling.
 
 - What behaviors did you test?
 - Why were these tests important?
