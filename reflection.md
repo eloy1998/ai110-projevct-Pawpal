@@ -2,10 +2,14 @@
 
 ## 1. System Design
 
+**Core Actions:**
+1. Add a pet - Allow users to enter and store pet information.
+2. Schedule a task - Enable adding and editing care tasks for pets with details like time, frequency, and priority.
+3. See today's tasks - Generate and display a daily schedule of tasks based on priorities and constraints.
+
 **a. Initial design**
 
-- Briefly describe your initial UML design.
-- What classes did you include, and what responsibilities did you assign to each?
+The initial UML design includes four main classes: Owner, Pet, Task, and Scheduler. The Owner class manages multiple pets and provides access to all their tasks. The Pet class stores pet details and a list of tasks. The Task class represents a single activity with description, time, frequency, and completion status. The Scheduler class retrieves, organizes, and manages tasks across pets, including sorting by time, filtering, and detecting conflicts.
 
 **b. Design changes**
 
